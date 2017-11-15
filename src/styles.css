@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.container-root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #e9e9e9;
+}
+
+.container-header {
+  width: 100%;
+}
+
+.container-body {
+  flex: 1;
+  overflow: auto;
+  background : none;
+}
+
+.container-footer {
+  width: 100%;
+}
+
+.shadow-toolbar {
+  z-index: 4;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.26)
+}
+
+.card-content {
+  margin: 16px;
+}
+
+.sidenavi-menu-list {
+  margin-top: -8px;
+}
+
+.sidenavi-menu {
+  padding: 0px;
+  width: 300px;
+}
