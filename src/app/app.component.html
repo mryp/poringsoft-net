@@ -7,9 +7,14 @@
         </button>
         <span>MENU</span>
       </mat-toolbar>
-      <h3 mat-subheader>グループ1</h3>
-      <mat-list-item *ngFor="let item of naviLinkList">
-        <a mat-line>{{item.title}}</a>
+      <mat-list-item *ngFor="let item of naviLinkList" (click)="jumpPage(item.title, item.link)">
+        <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
+        <h4 mat-line>{{item.title}}</h4>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let item of otherLinkList" (click)="jumpPage(item.title, item.link)">
+        <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
+        <h4 mat-line>{{item.title}}</h4>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
@@ -25,72 +30,7 @@
     </div>
 
     <div class="container-body">
-      <mat-card class="card-content">
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-        <p>コンテンツ</p>
-      </mat-card>
-    </div>
-    <div class="container-footer">
-      <mat-toolbar>
-        <span>Copyright (c) 2017 xxxx</span>
-      </mat-toolbar>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </mat-sidenav-container>

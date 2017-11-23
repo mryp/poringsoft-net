@@ -1,5 +1,6 @@
 import { Component, ViewChild, OnInit, HostListener } from '@angular/core';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -11,21 +12,24 @@ export class AppComponent implements OnInit {
   title = 'PORING SOFT .NET';
   widthTablet = 768;
 
-  @ViewChild('sidenav') sidenav: MatSidenavModule;
+  @ViewChild('sidenav') sidenav: MatSidenav;
   sidenaviMode = 'over';
   sidenaviOpened = false;
   sidenaviIconVisible = true;
 
   naviLinkList = [
-    { title: 'メニューアイテム', link: '/page', },
-    { title: 'メニューアイテム', link: '/page', },
-    { title: 'メニューアイテム', link: '/page', },
-    { title: 'メニューアイテム', link: '/page', },
-    { title: 'メニューアイテム', link: '/page', },
-    { title: 'メニューアイテム', link: '/page', },
-    { title: 'メニューアイテム', link: '/page', },
-    { title: 'メニューアイテム', link: '/page', },
+    { title: 'Top', icon: 'home', link: '/', },
+    { title: 'About', icon: 'info', link: '/about', },
   ];
+
+  otherLinkList = [
+    { title: 'Twitter', icon: 'link', link: 'https://twitter.com/mry_p', },
+    { title: 'GitHub', icon: 'link', link: 'https://github.com/mryp', },
+  ];
+
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.setSidenavi(window.innerWidth);
@@ -45,6 +49,23 @@ export class AppComponent implements OnInit {
       this.sidenaviMode = 'side';
       this.sidenaviOpened = true;
       this.sidenaviIconVisible = false;
+    }
+  }
+
+  jumpPage(title: string, link: string) {
+    if (this.sidenaviIconVisible) {
+      this.sidenav.close();
+    }
+
+    if (link.startsWith('http')) {
+      window.open(link);
+    } else {
+      if (link === '/') {
+        this.title = 'PORING SOFT .NET';
+      } else {
+        this.title = title;
+      }
+      this.router.navigate([link]);
     }
   }
 }
