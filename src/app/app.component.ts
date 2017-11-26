@@ -1,6 +1,7 @@
-import { Component, ViewChild, OnInit, HostListener } from '@angular/core';
+import { Component, ViewChild, OnInit, HostListener, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
+import { AppConfig, APP_CONFIG } from './app.config';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +9,13 @@ import { MatSidenav } from '@angular/material/sidenav';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-  title = 'PORING SOFT .NET';
-  widthTablet = 768;
-
   @ViewChild('sidenav') sidenav: MatSidenav;
   sidenaviMode = 'over';
   sidenaviOpened = false;
   sidenaviIconVisible = true;
+
+  title = this.config.siteTitle;
+  widthTablet = 768;
 
   naviLinkList = [
     { title: 'Top', icon: 'home', link: '/', },
@@ -23,11 +23,12 @@ export class AppComponent implements OnInit {
   ];
 
   otherLinkList = [
-    { title: 'Twitter', icon: 'link', link: 'https://twitter.com/mry_p', },
-    { title: 'GitHub', icon: 'link', link: 'https://github.com/mryp', },
+    { title: 'Twitter', icon: 'link', link: this.config.contactTwitter, },
+    { title: 'GitHub', icon: 'link', link: this.config.contactGitHub, },
   ];
 
   constructor(
+    @Inject(APP_CONFIG) private config: AppConfig,
     private router: Router
   ) { }
 
@@ -61,7 +62,7 @@ export class AppComponent implements OnInit {
       window.open(link);
     } else {
       if (link === '/') {
-        this.title = 'PORING SOFT .NET';
+        this.title = this.config.siteTitle;
       } else {
         this.title = title;
       }

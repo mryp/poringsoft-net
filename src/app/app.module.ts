@@ -11,6 +11,8 @@ import { MatToolbarModule,
    MatButtonModule
   } from '@angular/material';
 
+
+import { AppConfig, APP_CONFIG, APP_DI_CONFIG } from './app.config';
 import { AppComponent } from './app.component';
 import { TopComponent } from './top/top.component';
 import { AboutComponent } from './about/about.component';
@@ -38,7 +40,9 @@ const appRoutes = [
     MatListModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [
+    { provide: APP_CONFIG, useValue: APP_DI_CONFIG }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
