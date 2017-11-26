@@ -7,15 +7,18 @@ import { AppConfig, APP_CONFIG } from '../app.config';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
+  contact: string;
 
   constructor(
     @Inject(APP_CONFIG) private config: AppConfig
-  ) { }
+  ) {
+    this.contact = config.contactTwitter;
+   }
 
   ngOnInit() {
   }
 
-  jumpUrl(url: string) {
+  jumpWindow(url: string) {
     window.open(url);
   }
 }
